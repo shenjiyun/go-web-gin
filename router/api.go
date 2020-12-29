@@ -1,14 +1,14 @@
 package router
 
 import (
-	"web.sjy.com/controllers/api"
-	"web.sjy.com/router/middleware"
+	"web.sjy.com/controllers/admin"
+	"web.sjy.com/middleware"
 )
 
 func apiRoute() {
 	r := Gin.Group("/api")
 	r.Use(middleware.Api)
 	{
-		r.GET("/", api.Index)
+		r.GET("/", admin.Index{}.Hello)
 	}
 }
