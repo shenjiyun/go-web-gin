@@ -1,6 +1,9 @@
 package core
 
-import "web.sjy.com/router"
+import (
+	"web.sjy.com/core/db"
+	"web.sjy.com/router"
+)
 import "web.sjy.com/config"
 
 type Params struct {
@@ -16,7 +19,12 @@ func Run(p Params) {
 
 	//初始化Mysql
 	if p.Mysql {
+		db.InitMysql()
+	}
 
+	//初始化Redis
+	if p.Redis {
+		db.InitRedis()
 	}
 
 	//启动路由
